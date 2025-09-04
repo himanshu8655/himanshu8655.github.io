@@ -1,8 +1,396 @@
-<html>
- <head>
- <title>CS696A</title>
- </head>
- <body>
- Hello, World!
- </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Himanshu Garg — Portfolio</title>
+  <meta name="description" content="Portfolio of Himanshu Garg — Software Engineer" />
+  <style>
+    :root{
+      --bg: #0b0c0f;        /* dark */
+      --panel: #111318;
+      --text: #f5f7fb;
+      --muted: #c6c9d2;
+      --brand: #6ea8fe;
+      --accent: #7ee7c4;
+      --chip: #1a1d24;
+      --border: #222735;
+      --shadow: 0 10px 30px rgba(0,0,0,.35)
+    }
+    :root.light{
+      --bg: #f7f8fa;       /* light */
+      --panel: #ffffff;
+      --text: #10131a;
+      --muted: #3d4250;
+      --brand: #2b6cff;
+      --accent: #0abf9e;
+      --chip: #f0f2f7;
+      --border: #e6e8ef;
+      --shadow: 0 10px 30px rgba(0,0,0,.08)
+    }
+
+    /* Reset */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg); color:var(--text); overflow-x:hidden
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{ text-decoration:underline }
+    img{ max-width:100%; display:block }
+
+    /* Layout */
+    .wrap{ max-width:1100px; margin:0 auto; padding:24px }
+    header{ position:sticky; top:0; z-index:20; backdrop-filter:saturate(180%) blur(6px); background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid var(--border) }
+    header .bar{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 24px }
+    .logo{ display:flex; gap:12px; align-items:center }
+    .logo .avatar{ width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--accent)); display:grid; place-items:center; color:#000; font-weight:700 }
+    nav a{ padding:8px 10px; border-radius:10px }
+    nav a:hover{ background:var(--chip) }
+
+    .btn{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:var(--panel); color:var(--text); box-shadow:var(--shadow) }
+    .btn:hover{ transform:translateY(-1px) }
+    .btn.outline{ background:transparent }
+
+    /* Hero */
+    .hero{ padding:48px 24px 12px }
+    .hero .grid{ display:grid; grid-template-columns:1.3fr .7fr; gap:28px }
+    .badge{ display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; background:var(--chip); color:var(--muted); font-weight:600; font-size:12px }
+    h1{ font-size:40px; line-height:1.15; margin:12px 0 10px }
+    .subtitle{ color:var(--muted) }
+    .quick{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px }
+    .card{ background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:18px; box-shadow:var(--shadow) }
+
+    /* Chips */
+    .chips{ display:flex; flex-wrap:wrap; gap:10px }
+    .chip{ padding:6px 10px; background:var(--chip); border:1px solid var(--border); color:var(--text); border-radius:999px; font-size:13px }
+
+    /* Sections */
+    section{ scroll-margin-top:80px; padding:24px 24px }
+    section h2{ font-size:26px; margin:0 0 14px }
+    .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:18px }
+    .list{ display:grid; gap:14px }
+
+    .item{ padding:16px; border-radius:16px; border:1px solid var(--border); background:var(--panel) }
+    .item h3{ margin:0 0 6px; font-size:18px }
+    .item .meta{ font-size:13px; color:var(--muted) }
+    .item ul{ margin:10px 0 0 18px }
+
+    /* Footer */
+    footer{ border-top:1px solid var(--border); margin-top:36px; padding:24px; color:var(--muted) }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero .grid{ grid-template-columns:1fr }
+      .two-col{ grid-template-columns:1fr }
+      header .bar{ padding:10px 14px }
+      h1{ font-size:32px }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar wrap">
+      <div class="logo">
+        <div class="avatar" aria-hidden="true">HG</div>
+        <div>
+          <strong>Himanshu Garg</strong><br>
+          <span style="color:var(--muted); font-size:13px">Software Engineer • Java • React • Node.js</span>
+        </div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certification</a>
+        <a href="#contact">Contact</a>
+        <button class="btn outline" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="about">
+      <div class="grid">
+        <div>
+          <span class="badge">Open to full‑time roles</span>
+          <h1>Building reliable, fast, and secure software.</h1>
+          <p class="subtitle">I enjoy turning complex problems into elegant, performant solutions. I’ve solved 150+ DSA problems and built systems across fintech, healthcare integrations, and real‑time apps.</p>
+          <div class="quick">
+            <a class="btn" href="mailto:hgarg8655@gmail.com">Email me</a>
+            <a class="btn outline" href="#contact">Get my links</a>
+          </div>
+          <div style="margin-top:18px" class="chips">
+            <span class="chip">Java</span>
+            <span class="chip">Spring Boot</span>
+            <span class="chip">PHP</span>
+            <span class="chip">React</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">SQL/NoSQL</span>
+            <span class="chip">AWS</span>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <strong>Summary</strong>
+            <p style="margin:8px 0 0">I aim to drive innovation, optimize performance, and deliver outstanding software solutions. Recently at Casedok and previously at Reserve Bank IT, I’ve shipped secure auth (JWT + 2FA), microservices, and real‑time features.</p>
+          </div>
+          <div style="height:10px"></div>
+          <div class="card">
+            <strong>Quick Facts</strong>
+            <ul style="margin:8px 0 0 18px">
+              <li>150+ LeetCode problems solved</li>
+              <li>Built E2E features: auth, payments, chat, maps, streaming</li>
+              <li>Love clean architecture, performance, and DX</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="list">
+        <article class="item">
+          <h3>Software Engineer — Casedok</h3>
+          <div class="meta">Florida, USA · Jun 2025 – Present · React, Java, HTML, CSS</div>
+          <ul>
+            <li>Integrated stateless login filter (JWT) with 2‑factor auth using Spring Security.</li>
+            <li>Implemented core CRUD operations & parallel computation for faster data retrieval.</li>
+            <li>Added token‑based CAPTCHA validation to block bot submissions.</li>
+            <li>Integrated multiple healthcare APIs via RESTful services for seamless interoperability.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <h3>Software Engineer Intern — The Founder Series</h3>
+          <div class="meta">California, USA · Jun 2024 – Oct 2024 · Java, React, Node.js</div>
+          <ul>
+            <li>Contributed to a microservice architecture ensuring durable access to digital resources; optimized parallel computations (≈7% faster).</li>
+            <li>Automated data pipelines with Selenium & Beautiful Soup for scraping.</li>
+            <li>Used WebRTC (Simli API) for real‑time, low‑latency video streaming.</li>
+            <li>Integrated OpenAI Stream API & Play.ht for voice‑driven, real‑time responses.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <h3>Full Stack Java Developer — Reserve Bank Information Technology</h3>
+          <div class="meta">Maharashtra, India · Jun 2022 – Jul 2023 · Spring Boot, Angular, Kafka</div>
+          <ul>
+            <li>Launched 10+ REST APIs, streamlining workflows and reducing inquiries by 25%.</li>
+            <li>Built a reusable Angular component adopted by ~80% of teams.</li>
+            <li>Improved Time‑to‑Interactive by ~4% via lazy‑loading images and caching.</li>
+            <li>Maintained responsive React apps for seamless cross‑device UX.</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <h3>App Developer Intern — Cart Geeks</h3>
+          <div class="meta">Maharashtra, India · Jul 2021 – Apr 2022 · Flutter, Java, iOS</div>
+          <ul>
+            <li>Shipped mobile features integrating REST APIs & MySQL for iOS/Android.</li>
+            <li>Boosted performance leveraging GetX state management (~2% gain).</li>
+            <li>Coordinated closely with clients to meet requirements on time.</li>
+            <li>Integrated REST APIs ensuring synchronization & optimal performance.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="chips" style="margin-bottom:10px">
+        <button class="chip" data-filter="all">All</button>
+        <button class="chip" data-filter="backend">Backend</button>
+        <button class="chip" data-filter="fullstack">Full‑Stack</button>
+        <button class="chip" data-filter="mobile">Mobile</button>
+      </div>
+      <div class="list" id="projectList">
+        <article class="item" data-tags="backend fullstack">
+          <h3>Hop‑In <a href="https://github.com/himanshu8655/hop-in-frontend" target="_blank" rel="noreferrer" class="title-link" title="View on GitHub">🔗</a>
+          </h3>
+          <div class="meta">Jan 2025 – May 2025 · JavaScript, TypeScript, Node.js, Express, MongoDB</div>
+          <ul>
+            <li>Scalable backend with real‑time ride matching & carpool management.</li>
+            <li>Integrated Google Maps & Stripe for routing, tracking, and payments.</li>
+            <li>Added messaging, ride history, ratings/reviews, and safety mechanisms.</li>
+            <li>Independently built & tested end‑to‑end services for robust payment flows.</li>
+          </ul>
+          <div class="chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MongoDB</span></div>
+        </article>
+
+        <article class="item" data-tags="fullstack backend">
+          <h3>Library Management System <a href="https://github.com/himanshu8655/library_system_backend" target="_blank" rel="noreferrer" class="title-link" title="View on GitHub">🔗</a></h3>
+          <div class="meta">May 2024 – Sept 2024 · Java, Spring Security, Angular, SQL</div>
+          <ul>
+            <li>Web app for journals/books with integrated version control.</li>
+            <li>CRUD + parallel compute for faster retrieval & better performance.</li>
+            <li>Optimized queries and indexing for large datasets.</li>
+            <li>Role‑based access via Spring Security (authZ/authN).</li>
+          </ul>
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">Angular</span><span class="chip">SQL</span></div>
+        </article>
+
+        <article class="item" data-tags="fullstack mobile">
+          <h3>Trek‑Trek <a href="https://github.com/himanshu8655/trek-frontend-react.git" target="_blank" rel="noreferrer" class="title-link" title="View on GitHub">🔗</a></h3>
+          <div class="meta">Sept 2021 – May 2022 · React, Firebase, HTML, XML</div>
+          <ul>
+            <li>Web app for booking treks with Firebase backend.</li>
+            <li>Real‑time chat for coordination during adventures.</li>
+            <li>Redux for state management; deployed on Firebase hosting.</li>
+          </ul>
+          <div class="chips"><span class="chip">React</span><span class="chip">Firebase</span></div>
+        </article>
+
+        <article class="item" data-tags="mobile fullstack">
+          <h3>Easy Meds App <a href="https://github.com/himanshu8655/easymeds.git" target="_blank" rel="noreferrer" class="title-link" title="View on GitHub">🔗</a></h3>
+          <div class="meta">Sept 2021 – May 2022 · Java, Android, Firebase, GCP</div>
+          <ul>
+            <li>Find nearby medicine availability; barcode scanning for quicker checkout.</li>
+            <li>Dialogflow chatbot on GCP for assistance & task execution.</li>
+            <li>Push notifications & real‑time updates w/ FCM.</li>
+          </ul>
+          <div class="chips"><span class="chip">Android</span><span class="chip">Firebase</span><span class="chip">GCP</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="two-col">
+        <div class="item">
+          <strong>Languages</strong>
+          <p class="subtitle">Java (Adv), PHP, TypeScript, JavaScript, Python, C++, HTML, CSS, SQL</p>
+        </div>
+        <div class="item">
+          <strong>Databases</strong>
+          <p class="subtitle">MySQL, Oracle, Firebase, MongoDB, PostgreSQL, Redis, SQLite</p>
+        </div>
+        <div class="item">
+          <strong>Frameworks</strong>
+          <p class="subtitle">Spring Boot, Angular, Node.js, React, Flutter, Express, Kafka, FastAPI, Git</p>
+        </div>
+        <div class="item">
+          <strong>AWS</strong>
+          <p class="subtitle">Lambda, EC2, ECS, SQS, S3, DynamoDB, EMR, Step Functions</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & CERTS -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="list">
+        <article class="item">
+          <h3>Pace University — M.S. Computer Science (CGPA: 3.95)</h3>
+          <div class="meta">New York, USA · Sept 2023 – May 2025</div>
+          <p class="subtitle">Coursework: Data Structures, Parallel Computing, Database Management Systems</p>
+        </article>
+        <article class="item">
+          <h3>MPSTME, NMIMS University — B.Tech Computer Science (CGPA: 3.04)</h3>
+          <div class="meta">Maharashtra, India · Jul 2016 – May 2022</div>
+          <p class="subtitle">Coursework: Internet Computing, Theoretical Computer Science, Programming</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <h2>Certifications & Awards</h2>
+      <div class="list">
+        <article class="item"><h3>Forage — Goldman Sachs Software Engineering (Micro‑internship)</h3></article>
+        <article class="item"><h3>Complete Android Developer Course — Certification</h3></article>
+        <article class="item"><h3>Hackathon — First Prize (Reserve Bank Information Technology)</h3></article>
+        <article class="item"><h3>Full‑Stack Development Training — Reserve Bank Information Technology</h3></article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="two-col">
+        <div class="item">
+          <p><strong>Email:</strong> <a href="mailto:hgarg8655@gmail.com">hgarg8655@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+18622372906">+1 (862) 237‑2906</a></p>
+
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/hgarg08" target="_blank" rel="noreferrer">linkedin.com/in/hgarg08</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/himanshu8655" target="_blank" rel="noreferrer">github.com/himanshu8655</a></p>
+          <p><strong>Location:</strong> <span>NYC / Open to relocate</span></p>
+        </div>
+        <form class="item" onsubmit="event.preventDefault();">
+          <label for="name">Name</label>
+          <input id="name" name="name" class="input" placeholder="Your name" required>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" class="input" placeholder="you@domain.com" required>
+          <label for="msg">Message</label>
+          <textarea id="msg" name="message" class="input" rows="4" placeholder="Say hello…" required></textarea>
+          <div style="margin-top:10px"><button class="btn" type="submit">Send</button></div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap" style="padding:0">
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between">
+          <div>© <span id="year"></span> Himanshu Garg</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap">
+            <a href="#about">About</a> ·
+            <a href="#experience">Experience</a> ·
+            <a href="#projects">Projects</a> ·
+            <a href="#skills">Skills</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <style>
+
+label{ display:block; font-size:13px; color:var(--muted); margin:8px 0 6px }
+    .input{ width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--chip); color:var(--text) }
+    .input:focus{ outline:2px solid color-mix(in oklab, var(--brand) 55%, var(--accent)) }
+  </style>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const root = document.documentElement;
+    const pref = localStorage.getItem('theme');
+    if(pref === 'light') root.classList.add('light');
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if(id.length > 1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+
+    // Projects filter
+    const list = document.getElementById('projectList');
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const f = btn.getAttribute('data-filter');
+        document.querySelectorAll('#projects .chip').forEach(c => c.style.outline = c === btn ? '2px solid var(--brand)' : 'none');
+        list.querySelectorAll('.item').forEach(card => {
+          const show = f === 'all' || card.dataset.tags.includes(f);
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
 </html>
